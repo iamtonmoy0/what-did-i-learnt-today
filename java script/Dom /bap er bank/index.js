@@ -3,9 +3,9 @@ const getEmail =document.getElementById('email');
 const email= getEmail.value;
 const getPass =document.getElementById('pass');
 
-const passl = getPass;
-if (email === 'you@gmail.com' &&  passl === 12345){
-	console.log('welcome to bank')
+const passl = getPass.value;
+if (email === 'you@gmail.com' &&  passl === 'hello'){
+	window.location.href='main.html';
 }else{
 	console.log('you are not authorized')
 }
