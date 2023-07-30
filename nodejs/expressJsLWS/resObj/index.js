@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
 
-const myMiddleware=(req,res,next)=>{
-	console.log('loading')
-	next()
-}
-app.use(myMiddleware)
+// const myMiddleware=(req,res,next)=>{
+// 	console.log('loading')
+// 	next()
+// }
 // app.use(myMiddleware)
+// app.use(myMiddleware)
+
+
 app.get('/',(req,res)=>{
 	res.send('hello world')
 })
