@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Rainfall</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            overflow: hidden;
+        }
+        .rainfall {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .stream {
+            font-size: 16px;
+            color: #0F0; /* Green color for the "Matrix" effect */
+            position: absolute;
+            opacity: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="rainfall">
+        <!-- Create multiple streams of falling characters -->
+        <div class="stream" style="left: 5%"></div>
+        <div class="stream" style="left: 15%"></div>
+        <div class="stream" style="left: 25%"></div>
+        <div class="stream" style="left: 35%"></div>
+        <div class="stream" style="left: 45%"></div>
+        <div class="stream" style="left: 55%"></div>
+        <div class="stream" style="left: 65%"></div>
+        <div class="stream" style="left: 75%"></div>
+        <div class="stream" style="left: 85%"></div>
+        <div class="stream" style="left: 95%"></div>
+    </div>
+    <script>
+        const streams = document.querySelectorAll('.stream');
+
+        function generateCharacters() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let text = '';
+
+            for (let i = 0; i < 30; i++) {
+                text += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+
+            return text;
+        }
+
+        function animateStream(stream) {
+            let position = 0;
+            let interval = setInterval(() => {
+                if (position === window.innerHeight) {
+                    position = 0;
+                } else {
+                    position += 20;
+                }
+
+                stream.style.transform = `translateY(${position}px)`;
+            }, Math.floor(Math.random() * 100) + 50);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                stream.remove();
+                const newStream = document.createElement('div');
+                newStream.classList.add('stream');
+                newStream.style.left = stream.style.left;
+                newStream.innerText = generateCharacters();
+                animateStream(newStream);
+                document.querySelector('.rainfall').appendChild(newStream);
+            }, Math.floor(Math.random() * 5000) + 2000);
+        }
+
+        streams.forEach((stream) => {
+            stream.innerText = generateCharacters();
+            animateStream(stream);
+        });
+    </script>
+</body>
+</html>
