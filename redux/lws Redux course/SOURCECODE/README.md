@@ -1,0 +1,1 @@
+all the assignments code of lws redux

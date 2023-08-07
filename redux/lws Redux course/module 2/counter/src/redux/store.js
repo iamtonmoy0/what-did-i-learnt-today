@@ -1,6 +1,10 @@
 import { createStore ,applyMiddleware} from 'redux'
 import rootReducer from './RootReducer';
-// TOTO:need to add applyMiddleware
-const store = createStore(rootReducer,applyMiddleware(myLogger));
+import {composeWithDevTools} from 'redux-devtools-extension';
+// add middleware
+import logger from 'redux-logger'
+const store = createStore(
+	rootReducer,composeWithDevTools(applyMiddleware(logger))
+	);
 
 export default store;
