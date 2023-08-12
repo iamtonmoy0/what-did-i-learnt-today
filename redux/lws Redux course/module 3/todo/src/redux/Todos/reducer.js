@@ -1,4 +1,4 @@
-import { ADDED, TOGGLE } from './actionTypes';
+import { ADDED, ALLCOMPLETED, CLEARCOMPLETED, COLORSELECTED, DELETE, TOGGLE } from './actionTypes';
 import initialState from './initialState';
 
 const nextTodoId = (todos)=>{
@@ -14,7 +14,10 @@ const reducer = (state=initialState,action)=>{
 			return [
 				...state,
 				{
-					id:nextTodoId(state)
+					id:nextTodoId(state),
+					text:action.payload,
+					completed:false
+
 				}
 			]
 		case TOGGLE:
@@ -23,8 +26,36 @@ const reducer = (state=initialState,action)=>{
 					return todo
 				}
 				return{
-					
+					...todo,
+					completed:!todo.completed
 				}
 			})
+		case COLORSELECTED:
+			const {todoId,color} = action.payload;
+			return state.map((todo)=>{
+				if(todo.id !==todoId){
+					return todo
+				}
+				return{
+					...todo,
+					color: color
+				}
+			})
+		case DELETE:
+		return state.filter(todo=>todo.id !== action.payload);
+		case ALLCOMPLETED:
+			return state.map(todo=>{
+				return {
+					...todo,
+					completed : true
+				}
+			});
+		case CLEARCOMPLETED:
+			return state.filter(todo=>!todo.completed);
+
+
+		default:
+			return state;
 	}
 }
+export default reducer;
