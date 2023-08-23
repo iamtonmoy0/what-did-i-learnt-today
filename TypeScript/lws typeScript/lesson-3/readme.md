@@ -1,0 +1,1 @@
+# ts configured and usage of array
