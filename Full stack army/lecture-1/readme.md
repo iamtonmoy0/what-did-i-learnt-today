@@ -1,0 +1,1 @@
+[lecture 1](https://github.com/mrhm-dev/full-stack-army/tree/master/class-overview/Lecture-01)
