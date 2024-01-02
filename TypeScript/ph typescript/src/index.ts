@@ -87,4 +87,13 @@ const book: boolean = true;
 const ticket: string = book ? "yes" : "no";
 // console.log(ticket);
 
-// assertion
+// Type assertion
+const think: unknown = 34.12448;
+console.log((think as number).toFixed(2));
+
+// conditionals
+type A = 12;
+type B = A extends boolean ? string : null;
+
+// map
+
