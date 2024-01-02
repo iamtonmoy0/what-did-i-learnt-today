@@ -24,6 +24,67 @@ arr1.push(...arr2);
 // console.log(arr1);
 
 // rest parameter
-const unknown=()=>{
-	
+const unknown = (...score: number[]): number => {
+  let sum: number = 0;
+  score.map((n) => {
+    sum += n;
+  });
+  return sum;
+};
+
+// console.log(unknown(1,2,2,3,4,5,6,7,8));
+
+// alias
+type newNum = number | string;
+const st: newNum = "hello";
+
+type heroType = {
+  name: string;
+  age: number;
+};
+const person: heroType = {
+  name: "hello",
+  age: 12,
+};
+// interfaces
+
+interface typeInt {
+  name: string;
+  age: number;
 }
+const user: typeInt = {
+  name: "tonmoy",
+  age: 21,
+};
+
+// union and intersection
+type heroA = {
+  name: string;
+  age: number;
+};
+type heroB = heroA & {
+  salary: number;
+  position: string;
+};
+
+const heroUser: heroB = {
+  name: "tonmoy",
+  age: 12,
+  salary: 20000,
+  position: "manager",
+};
+// console.log(heroUser);
+//null
+const testsNull = (name: string | null): void => {
+  if (name === null) {
+    return console.log("it is null");
+  }
+};
+// console.log(testsNull(null));
+
+//turnery operator
+const book: boolean = true;
+const ticket: string = book ? "yes" : "no";
+// console.log(ticket);
+
+// assertion
