@@ -95,5 +95,19 @@ console.log((think as number).toFixed(2));
 type A = 12;
 type B = A extends boolean ? string : null;
 
-// map
+// generic Interface
 
+interface genInter<T> {
+  name: string;
+  age: T;
+  salary: number;
+}
+
+const userGen: genInter<number> = {
+  name: "hello",
+  age: 22,
+  salary: 20000,
+};
+// console.log(userGen);
+
+// Conditional types
