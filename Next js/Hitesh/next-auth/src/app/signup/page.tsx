@@ -2,16 +2,39 @@
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function SignupPage() {
+  // const route = useRouter();
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+
   const [user, setUser] = useState({
     email: "",
     password: "",
     username: "",
   });
 
-  const onSignup = async () => {};
+  const onSignup = async () => {
+    try {
+      console.log(user);
+      const response = await axios.post("/api/users/signup", user);
+      console.log(response);
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
+  useEffect(() => {
+    if (
+      user.email.length > 0 &&
+      user.password.length > 0 &&
+      user.username.length > 0
+    ) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [user]);
+
   return (
     <div className=" flex flex-col  items-center justify-center min-h-screen py-2">
       <h1>Signup</h1>
@@ -54,10 +77,12 @@ export default function SignupPage() {
         />
 
         <button
-        onClick={onSignup}
-        type="button"
-        className="py-2 px-4 bg-slate-400 focus:bg-blue-300"
-        >Signup here</button>
+          onClick={onSignup}
+          type="button"
+          className="py-2 px-4 bg-slate-400 focus:bg-blue-300"
+        >
+          Signup here
+        </button>
       </div>
     </div>
   );
