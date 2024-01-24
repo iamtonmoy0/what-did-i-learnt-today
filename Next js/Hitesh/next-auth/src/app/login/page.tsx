@@ -1,14 +1,26 @@
 "use client";
+import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 export default function LoginPage() {
+  const route = useRouter();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
-  const onSignup = async () => {};
+  const onLogin = async () => {
+    try {
+      const response = await axios.post("/api/users/login", user);
+      console.log("Login success", response);
+      // window.alert("login success");
+      // route.push("/");
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
   return (
     <div className=" flex flex-col  items-center justify-center min-h-screen py-2">
       <h1 className="text-3xl underline">Login</h1>
@@ -40,13 +52,13 @@ export default function LoginPage() {
         />
 
         <button
-          onClick={onSignup}
+          onClick={onLogin}
           type="button"
           className="py-2 px-4 bg-slate-400 focus:bg-blue-300"
         >
-          Signup here
+          Login
         </button>
-        <Link href="/signup" >Signup</Link>
+        <Link href="/signup">Signup</Link>
       </div>
     </div>
   );
