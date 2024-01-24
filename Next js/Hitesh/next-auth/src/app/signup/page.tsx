@@ -1,10 +1,11 @@
 "use client";
+
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-export default function SignupPage() {
+export default function SignUpPage() {
   // const route = useRouter();
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
@@ -16,10 +17,8 @@ export default function SignupPage() {
 
   const onSignup = async () => {
     try {
-      console.log(user);
       const response = await axios.post("/api/users/signup", user);
-      console.log(response);
-    } catch (error: any) {
+       } catch (error: any) {
       console.log(error.message);
     }
   };
