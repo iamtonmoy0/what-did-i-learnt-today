@@ -13,8 +13,14 @@ export default function LoginPage() {
 
   const onLogin = async () => {
     try {
-      const response = await axios.post("/api/users/login", user);
-      console.log("Login success", response);
+      const response = await axios
+        .post("/api/users/login", user)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       // window.alert("login success");
       // route.push("/");
     } catch (error: any) {

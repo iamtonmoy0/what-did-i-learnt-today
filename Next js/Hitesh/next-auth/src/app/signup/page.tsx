@@ -17,8 +17,10 @@ export default function SignUpPage() {
 
   const onSignup = async () => {
     try {
-      const response = await axios.post("/api/users/signup", user);
-       } catch (error: any) {
+      const response = await axios
+        .post("/api/users/signup", user)
+        .then((res) => console.log(res));
+    } catch (error: any) {
       console.log(error.message);
     }
   };
