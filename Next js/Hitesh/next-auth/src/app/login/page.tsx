@@ -21,8 +21,8 @@ export default function LoginPage() {
         .catch((err) => {
           console.log(err);
         });
-      // window.alert("login success");
-      // route.push("/");
+      window.alert("login success");
+      route.push("/");
     } catch (error: any) {
       console.log(error);
     }
