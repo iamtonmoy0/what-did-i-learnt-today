@@ -1,9 +1,10 @@
 "use client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 
 export default function ProfilePage() {
+  const [user, setUser] = useState("");
   const route = useRouter();
   const handleLogout = async () => {
     try {
@@ -14,10 +15,22 @@ export default function ProfilePage() {
       console.log(error);
     }
   };
+
+  // get profile data
+  const getData = async () => {
+    let res = await axios.get("/api/users/user");
+    setUser(res.data);
+  };
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
-      ProfilePage this
-      <button onClick={handleLogout} className="bg-[tomato] py-2 px-6 rounded">Logout</button>
+      ProfilePage
+      {JSON.stringify(user)}
+      <button onClick={handleLogout} className="bg-[tomato] py-2 px-6 rounded">
+        Logout
+      </button>
+      <button onClick={getData} className="bg-[tomato] py-2 px-6 rounded">
+        Get User details
+      </button>
     </div>
   );
 }
