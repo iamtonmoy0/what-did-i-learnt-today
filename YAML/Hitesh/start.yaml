@@ -1,0 +1,10 @@
+# yaml starts
+courses:
+  course_name: "Javascript"
+  version: 1.2
+  price: 22
+  is_public: true
+  release_date: 12-12-2024
+  tags: -python
+    -javascript
+    -typescript
