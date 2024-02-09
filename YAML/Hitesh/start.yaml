@@ -8,3 +8,10 @@ courses:
   tags: -python
     -javascript
     -typescript
+  instructor:
+    -name: "john"
+     email: "john@gmail.com"
+     phone: "+9876543210"
+    -name: "Emma"
+     email: "emma@gmail.com"
+     phone: "+185841615646" 
