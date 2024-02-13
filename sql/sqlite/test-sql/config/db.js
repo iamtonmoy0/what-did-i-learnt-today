@@ -8,12 +8,12 @@ const db = new sqlite3.Database(dbName, (error) => {
   } else {
     console.log("connected to db");
     db.run(
-      "CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY AUTOCOMPLETE,name TEXT,description  TEXT) ",
+      "CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, description TEXT)",
       (err) => {
         if (err) {
           console.log(err.message);
         } else {
-          console.log("Table exist or created");
+          console.log("Table exists or was created");
         }
       }
     );
