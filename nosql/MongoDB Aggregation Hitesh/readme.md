@@ -140,3 +140,18 @@ Projcet Aggregation
 
 ]
 ```
+
+Find the users that has enum and id
+
+```
+[
+  {
+  $match:{
+    tags:{$all:["enum","id"]}
+  }
+}
+]
+```
+
+### LookUp
+
