@@ -1,0 +1,6 @@
+Package    Version
+---------- -------
+dnspython  2.6.1
+pip        23.0.1
+pymongo    4.6.2
+setuptools 66.1.1
