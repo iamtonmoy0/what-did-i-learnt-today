@@ -174,3 +174,48 @@ This works as you would expect based on what we've done before
 ```
 DELETE FROM users WHERE user_id = 1000;
 ```
+
+---
+
+### SQL – COMPLEX SQL QUERIES
+
+### Complex SQL Queries
+
+Let's get into some more complicated querying. First thing we're going to need is two more tables, comments and boards. We'll be making the data structure for a very simple message board system that has users, comments, and boards. The interesting part here is that every comment is posted by a user and therefore will need to reference the user table, and it will be posted to board and therefore will need to reference a board from the boards table. This is what you would call relational data and where relational databases really shine.
+
+### Foreign Keys
+
+Let's jot down all of our schemas for our users, boards, and comments.
+
+```
+
+CREATE TABLE users (
+  user_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  username VARCHAR ( 25 ) UNIQUE NOT NULL,
+  email VARCHAR ( 50 ) UNIQUE NOT NULL,
+  full_name VARCHAR ( 100 ) NOT NULL,
+  last_login TIMESTAMP,
+  created_on TIMESTAMP NOT NULL
+);
+
+CREATE TABLE boards (
+  board_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  board_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+  board_description TEXT NOT NULL
+);
+
+CREATE TABLE comments (
+  comment_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
+  board_id INT REFERENCES boards(board_id) ON DELETE CASCADE,
+  comment TEXT NOT NULL,
+  time TIMESTAMP
+);
+
+```
+
+The first two should look pretty familiar. The only new-ish thing is the user of the TEXT data type. This is basically a VARCHAR with no cap (or rather a very large cap.) It has some other small differences but for now just know it's uncapped text.
+user_id INT REFERENCES users(user_id) is technically all you need to make a foreign key. The first part, INT, makes it known that this key will be stored as an integer. It then uses the REFERENCES key word to let PostgreSQL know that it is a foreign key. A foreign key is a field in one table that references the primary key of another table. In this case, a comment will reference the user_id in another table, the users table. The users part say it's reference the users table and the (user_id) is the name of the key in the other table. In this case, we called both user_id (which will probably happen somewhat frequently but not always) so they match but if we had called the user_id just id in the users table, we'd put id there.
+ON DELETE CASCADE lets PostgreSQL know what to do if the user gets deleted. So if a user makes a comment on the message board and then deletes their account, what do you want it to do? If you omit the ON DELETE CASCADE part, it's the same as doing ON DELETE NO ACTION which means it'll just error and not let you delete the user until you've deleted all the comments first. You can also do ON DELETE SET NULL which means it'll make the user_id null on any comment that was made by that user.
+We've dne the same for board_id, just referencing the boards table instead of the users table.
+Let's go ahead and put some dummy data in there. Copy / paste [this query] into your psql terminal. It may take a few minutes.
