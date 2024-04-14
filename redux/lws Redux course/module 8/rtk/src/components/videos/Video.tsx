@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
+// import authorImage from "../../assets/author.png";
 
-export default function VideoGridItem({ video = {} }) {
-  const { id, thumbnail, title, duration, author, avatar, views, date } = video;
+export default function Video({ video }) {
+  const { id, title, duration, author, views, date, thumbnail } = video;
 
   return (
     <div className="col-span-12 sm:col-span-6 md:col-span-3 duration-300 hover:scale-[1.03]">
       <div className="w-full flex flex-col">
         <div className="relative">
-          <Link to={`videos/${id}`}>
+          <Link to={`/videos/${id}`}>
             <img src={thumbnail} className="w-full h-auto" alt={title} />
           </Link>
 
@@ -17,21 +18,16 @@ export default function VideoGridItem({ video = {} }) {
         </div>
 
         <div className="flex flex-row mt-2 gap-2">
-          <Link to={`videos/${id}`} className="shrink-0">
-            <img src={avatar} className="rounded-full h-6 w-6" alt={author} />
-          </Link>
+          <img src="" className="rounded-full h-6 w-6 shrink-0" alt={author} />
 
           <div className="flex flex-col">
-            <Link to={`videos/${id}`}>
+            <Link to={`/videos/${id}`}>
               <p className="text-slate-900 text-sm font-semibold">{title}</p>
             </Link>
-            <Link
-              className="text-gray-400 text-xs mt-2 hover:text-gray-600"
-              to={`videos/${id}`}
-            >
+            <span className="text-gray-400 text-xs hover:text-gray-600">
               {author}
-            </Link>
-            <p className="text-gray-400 text-xs mt-1">
+            </span>
+            <p className="text-gray-400 text-xs">
               {views} views . {date}
             </p>
           </div>
