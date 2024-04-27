@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="input" type="text" placeholder="input your text here" />
+    <button id="send" onclick="send()">submit</button>
+
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+      let socket = io();
+      function send() {
+        const inputText = document.getElementById("input").value;
+        <!-- alert(inputText); -->
+        socket.send(inputText);
+      }
+    </script>
+  </body>
+</html>

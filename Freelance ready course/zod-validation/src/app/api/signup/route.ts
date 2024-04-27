@@ -19,16 +19,28 @@ export async function POST(request: Request, response: Response) {
         { status: 400 }
       );
     }
+    // phase 2
     const userExistByEmail = await UserModel.findOne({ email });
     // verify code
     const verifyCode = Math.floor(1000 + Math.random() * 9000).toString();
     if (userExistByEmail) {
-      // TODO:
+      // if user exist with this email
+      if (userExistByEmail.isVerified) {
+        return Response.json(
+          {
+            success: false,
+            message: "User already exists with this email",
+          },
+          { status: 400 }
+        );
+      } else {
+        // TODO:need to work on this
+      }
     } else {
       const hashedPass = await bcrypt.hash(password, 10);
       const expiryDate = new Date();
       expiryDate.setHours(expiryDate.getHours() + 1);
-      //   ccreate new user
+      //   create new user
       const newUser = await new UserModel({
         username,
         email,
@@ -41,6 +53,8 @@ export async function POST(request: Request, response: Response) {
       await newUser.save();
     }
     // send verification mail
+
+    
   } catch (error) {
     console.log(error, "error registering user");
     return Response.json({
