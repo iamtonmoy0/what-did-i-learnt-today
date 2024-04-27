@@ -1,3 +1,4 @@
+import { sendVerificationEmail } from "@/helpers/sendVerificationEmail";
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/models/User";
 import bcrypt from "bcryptjs";
@@ -34,7 +35,11 @@ export async function POST(request: Request, response: Response) {
           { status: 400 }
         );
       } else {
-        // TODO:need to work on this
+        const hashedPassword = await bcrypt.hash(password, 10);
+        userExistByEmail.password = hashedPassword;
+        userExistByEmail.verifyCode = verifyCode;
+        userExistByEmail.verifyCodeExpiry = new Date(Date.now() + 3600000);
+        await userExistByEmail.save();
       }
     } else {
       const hashedPass = await bcrypt.hash(password, 10);
@@ -53,8 +58,29 @@ export async function POST(request: Request, response: Response) {
       await newUser.save();
     }
     // send verification mail
+    const emailResponse = await sendVerificationEmail(
+      email,
+      username,
+      verifyCode
+    );
+    // check is response is error
+    if (!emailResponse.success) {
+      return Response.json(
+        {
+          success: false,
+          message: emailResponse.message,
+        },
+        { status: 500 }
+      );
+    }
 
-    
+    return Response.json(
+      {
+        success: true,
+        message: "User registered successfully. Please verify your account.",
+      },
+      { status: 201 }
+    );
   } catch (error) {
     console.log(error, "error registering user");
     return Response.json({
