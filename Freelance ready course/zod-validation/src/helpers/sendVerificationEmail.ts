@@ -1,6 +1,6 @@
 import { resend } from "@/lib/resend";
 import { ApiResponse } from "@/types/apiResonse";
-import VerificationEmail from "../../emails/verificationEmaill";
+import VerificationEmail from "../../emails/verificationEmail";
 
 export async function sendVerificationEmail(
   email: string,
@@ -12,7 +12,7 @@ export async function sendVerificationEmail(
       from: "hello@gmail.com",
       to: email,
       subject: "verify code",
-      react: <VerificationEmail />,
+      react: VerificationEmail({ username, otp: verifyCode }),
     });
     return { success: true, message: "mail send successful" };
   } catch (error) {
