@@ -1,21 +1,15 @@
 package main
 
 import (
-	"crypto/sha1"
-	"io"
-	"io/ioutil"
+	"fmt"
 )
 
 func main() {
-
+fmt.Println("hello world")
 }
 
-func hashAndBroadcast(r io.Reader) {
-	b, err := ioutil.ReadAll(r)
-	if err != nil {
-		return err
-	}
-	hash := sha1.Sum(b)
+// func hashAndBroadcast(r io.Reader) {
+
 	
 
-}
+// }
