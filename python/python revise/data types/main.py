@@ -10,5 +10,4 @@
 # None: None
 # Functions,modules,classes
 
-# Advance:Decorators,Generators,Iterators
-
+# Advance:Decorators,Generators,Iterators,MetaProgramming
