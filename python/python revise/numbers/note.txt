@@ -1,0 +1,1 @@
+python has a strength in numbers .and numpy library has a huge advantage about using complex operations and other stuff.
