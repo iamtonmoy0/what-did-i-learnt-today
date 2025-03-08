@@ -1,7 +1,14 @@
 import React from 'react'
 
 export default function PlaceTree(place) {
+    console.log(place)
   return (
-    <div>{place.title}</div>
+        <>
+      <li>
+        {place.place.title}
+        {}
+
+    </li>
+    </>
   )
 }
