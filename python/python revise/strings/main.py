@@ -4,4 +4,4 @@ y = x[0:]
 # print(y)
 
 number = '123456789'
-print(number[0:7:2])
+print(number[:])
