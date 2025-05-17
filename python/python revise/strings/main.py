@@ -30,3 +30,19 @@ print(tea.replace("lemon", "green"))
 print(tea.find("tea"))
 # check count
 print(tea.count(tea))
+
+order = "this is {}"
+# this will print the string with the value of order
+print(order.format(hello))
+
+# joint
+a = ["yamaha","honda", "suzuki"]
+print(" ".join(a))
+# split
+print("-".join(a))
+
+string = "hi my name is \"Tonmoy\""
+print(string)
+
+# print things in new line 
+print("hi\nmy name is \"Tonmoy\"")
