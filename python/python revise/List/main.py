@@ -6,3 +6,8 @@ print(hello[-1])  # Output: alpha
 print(hello[1:3])  # Output: ['romeo', 'alpha']
 hello[1:3] = ['jane', 'doe']  # Replaces 'romeo' and 'alpha' with 'jane' and 'doe'
 print(hello)  # Output: ['john', 'jane', 'doe']
+
+
+tea = ['green', 'black', 'oolong']
+tea[1:1] = ['white', 'herbal']  # Inserts 'white' and 'herbal' at index 1
+print(tea)
