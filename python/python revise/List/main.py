@@ -11,3 +11,5 @@ print(hello)  # Output: ['john', 'jane', 'doe']
 tea = ['green', 'black', 'oolong']
 tea[1:1] = ['white', 'herbal']  # Inserts 'white' and 'herbal' at index 1
 print(tea)
+tea = []
+print(tea)
