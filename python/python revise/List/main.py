@@ -13,3 +13,12 @@ tea[1:1] = ['white', 'herbal']  # Inserts 'white' and 'herbal' at index 1
 print(tea)
 tea = []
 print(tea)
+
+
+# loop starts here
+person = ['john', 'doe', 'jane']
+for name in person:
+    print(name)
+# if we want to print the value in same line with comma or minus
+for name in person:
+    print(name,end='-')
