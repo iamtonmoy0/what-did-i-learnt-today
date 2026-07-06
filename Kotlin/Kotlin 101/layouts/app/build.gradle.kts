@@ -8,7 +8,6 @@ android {
         version = release(36) {
             minorApiLevel = 1
         }
-    }
 
     defaultConfig {
         applicationId = "com.example.layouts"
@@ -47,4 +46,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
+}}
+dependencies {
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.material)
 }

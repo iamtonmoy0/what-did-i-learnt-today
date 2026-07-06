@@ -5,20 +5,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Textviews"
+    tools:context=".buttons">
 
-    >
-
-    <TextView
-        android:id="@+id/helloTxt"
-        android:layout_width="wrap_content"
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="hello world"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="20sp"
-        android:background="#D01B1B"
-        />
+        android:text="hello"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
