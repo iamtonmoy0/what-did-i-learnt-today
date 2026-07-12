@@ -5,7 +5,7 @@ plugins {
 android {
     namespace = "com.example.toastandalert"
     compileSdk {
-        version = release(37)
+        version = release(36)
     }
     buildFeatures{
         viewBinding=true
