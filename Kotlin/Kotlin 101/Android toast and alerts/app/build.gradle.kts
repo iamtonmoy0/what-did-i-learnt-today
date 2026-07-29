@@ -4,9 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.toastandalert"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
     buildFeatures{
         viewBinding=true
     }
@@ -14,7 +12,7 @@ android {
     defaultConfig {
         applicationId = "com.example.toastandalert"
         minSdk = 23
-        targetSdk = 37
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -23,9 +21,11 @@ android {
 
     buildTypes {
         release {
-            optimization {
-                enable = false
-            }
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
