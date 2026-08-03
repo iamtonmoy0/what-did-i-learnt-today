@@ -1,0 +1,5 @@
+- [x] Downgrade AGP in `libs.versions.toml`
+- [x] Fix `app/build.gradle.kts` (SDK versions and build types)
+- [x] Fix `activity_main.xml` (Button text)
+- [x] Run Gradle Sync
+- [x] Build and Deploy
