@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">List and Views</string>
+    <string-array name="countries">
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+        <item>amar sorom kore</item>
+
+    </string-array>
+</resources>
