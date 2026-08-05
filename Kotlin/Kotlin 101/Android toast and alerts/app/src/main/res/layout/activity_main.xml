@@ -31,4 +31,15 @@
         app:layout_constraintStart_toStartOf="@+id/toast"
         tools:layout_editor_absoluteY="417dp" />
 
+    <Button
+        android:id="@+id/dialougebar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dialouge  bar"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/sncakbar"
+        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintStart_toStartOf="@+id/sncakbar"
+        tools:layout_editor_absoluteY="522dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
